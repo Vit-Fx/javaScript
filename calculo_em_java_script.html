@@ -1,0 +1,118 @@
+<!doctype HTML>
+
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Cálculo de números</title>
+        <style type="text/css">
+            body
+            {
+                font-family:'Times New Roman';
+                font-size:1,5 vw;
+                background-color:rgb(209, 137, 145);
+                color:rgb(23,0,60);
+            }
+
+            input[type=button]:active
+            {
+                background-color:rgb(200,10,10);
+                color:rgb(255,255,255);
+            }
+
+            input[type=reset]:active
+            {
+                background-color:rgb(10,10,240);
+                color:rgb(255,255,255);
+            }
+
+            img
+            {
+                height: 15%;
+                width: 15%;
+            }
+    
+        </style>
+        <script language="JavaScript"> 
+            function dobro ()
+            {
+                var num=document.getElementById("txtnum").value;
+                var result=num*2;
+                document.getElementById("txtresult").value=result;
+            }
+
+            function triplo ()
+            {
+                var num=document.getElementById("txtnum").value;
+                var result=num*3;
+                document.getElementById("txtresult").value=result;
+            }
+
+            function quadra ()
+            {
+                var num=document.getElementById("txtnum").value;
+                var result=Math.pow(num,2);
+                document.getElementById("txtresult").value=result;   
+            }
+
+            function raiz ()
+            {
+                var num=document.getElementById("txtnum").value;
+                var result=Math.sqrt(num);
+                document.getElementById("txtresult").value=result;
+            }
+
+            function limpar ()
+            {
+                document.getElementById("txtnum").focus();
+            }
+
+            function area ()
+            {
+                var num=document.getElementById("txtdia").value;
+                num=num/2;
+                var result=Math.PI * Math.pow(num,2);
+                document.getElementById("txtresul").value=result;
+            }
+        </script>
+    </head>
+
+    <body>
+        <center>
+            <script language="JavaScript">
+                var Nome;
+                Nome=prompt("Por favor, digite seu nome no espaço abaixo","Digite aqui");
+                document.write("Olá " + Nome + "!" +  "<br/> Bem vindo à essa página.");
+            </script>
+            <br/><br/>
+
+            <form>
+                <h3>Digite um número:</h3>&nbsp;&nbsp;
+                <input type="text" id="txtnum"/><br/><br/>
+                <input type="button" value="Dobro" onClick="dobro ()"/>
+                <input type="button" value="Triplo" onClick="triplo ()"/>
+                <input type="button" value="Quadrado" onCLick="quadra ()"/>
+                <input type="button" value="Raiz" onClick="raiz ()"/>
+                <input type="reset" value="Limpar" onClick="limpar()"/><br/><br/>
+                O resultado é:&nbsp;&nbsp;
+                <input type="text" id="txtresult"/>
+            </form>
+            <br/><br/>
+
+            <form>
+                <h3>Calcule a área do círculo</h3>
+                Informe a medida do diâmetro do círculo:&nbsp;&nbsp;
+                <input type="text" id="txtdia"/><br/><br/>
+                <input type="button" value="Calcule" onClick="area ()"/>
+                <input type="reset" value="Limpar" onClick="limpar ()"/><br/><br/>
+                A área do círculo é: &nbsp;&nbsp;
+                <input type="text" id="txtresul"/>
+            </form>
+            
+            <br/><br/>
+            <img src="circulo.jpg"/>
+        </center>
+
+        
+    </body>
+
+</html>

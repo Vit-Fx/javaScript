@@ -1,0 +1,88 @@
+<!doctype HTML>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Objeto Math - método Random</title>
+        <style>
+            body
+            {
+                font-size: 120%;
+                font-family:Arial;
+            }
+
+            form
+            {
+                border-width:3px;
+                border-style:groove;
+                border-color:brown;
+                background-color:rgb(173, 136, 121);
+                width:30%;
+                padding:5px;
+            }
+
+        </style>
+    </head>
+    <body>
+            <form>
+                <h2>Sorteio</h2>
+                Digite um valor entre 0 e 10:<br/>
+                <div>
+                    <input type="text" name="txtval" id="txtvalor"/>
+                    <input type="button" value="Tente" onclick="Tentar()"/>
+                    <input type="reset" value="Reiniciar" onclick="Reiniciar()"/> 
+                </div>
+           </form>
+            <script language="JavaScript">
+           
+                var tentativas = 1;
+            
+                function Tentar()
+                {
+					var valor_digitado = document.getElementById("txtvalor").value
+
+					if (isNaN(valor_digitado) || (valor_digitado == ""))
+					{
+						window.alert("O valor digitado é inválido!");
+						document.getElementById("txtvalor").value = "";
+						document.getElementById("txtvalor").focus();
+
+					}
+					else 
+					{
+						valor_digitado = parseFloat(valor_digitado);
+
+						if ((valor_digitado < 0) || (valor_digitado > 10))
+						{
+							window.alert("Valor digitado está fora do intervalo permitido!");
+							document.getElementById("txtvalor").value = "";
+							document.getElementById("txtvalor").focus();
+						}
+						else
+						{
+							var valor_gerado = Math.floor(Math.random()*11);
+								
+							if (tentativas <= 5)
+							{
+								if (valor_digitado == valor_gerado)
+									window.alert("O número gerado foi " + valor_gerado + ". Parabéns!");
+								else 
+									window.alert("O número gerado foi " + valor_gerado + ". Sorry!");
+									
+									document.getElementById("txtvalor").value = "";
+									document.getElementById("txtvalor").focus();
+
+								tentativas++;
+							}
+							else
+								window.alert("O número de tentativas acabou!");
+						}
+					}
+					
+					function Reiniciar()
+					{
+						location.reload();
+					}
+                }
+        </script>
+    </body>
+</html>

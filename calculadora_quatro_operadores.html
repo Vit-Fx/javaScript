@@ -1,0 +1,194 @@
+<!doctype HTML>
+
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8"/> 
+        <title>Calculadora de 4 operações (+, -, *, /)</title>
+        <style type="text/css">
+   
+
+            input[type=button]:active
+
+            {
+                background-color:rgb(32, 209, 165);
+                color:rgb(255,255,255);
+            }
+
+            input[type=reset]:active
+            
+            {
+                background-color:rgb(240, 225, 10);
+                color:rgb(0,0,0);
+            }
+
+            body
+            {
+                background-color:rgb(175, 127, 175);
+            }
+
+            table
+            {
+                border: 8px double;
+                border-color:rgb(255,255,255);
+                padding:2%;
+                background-color:rgb(124, 45, 124);
+                color:rgb(255,255,255);
+                font-size:120%;
+                font-family:"Times New Roman";
+                border-spacing:10px;
+            }
+
+            .operadores
+            {
+                text-align: center;
+                margin-top:100%;
+
+            }
+
+            h2
+            {
+                text-decoration: underline;
+            }
+
+        </style>
+        
+        <script language="JavaScript">
+            function Exibir(OPE)
+            {
+                var nume1=document.getElementById("txtN1").value;
+                var nume2=document.getElementById("txtN2").value;
+                var erro=false;
+
+                if (isNaN(nume1) || (nume1==""))
+                {
+                    erro=true;
+                    document.getElementById("txtN1").value="";
+                    document.getElementById("txtN1").focus;
+                }
+                       
+                if (isNaN(nume2) || (nume2==""))
+                {
+                    erro=true;
+                    document.getElementById("txtN2").value="";
+                    document.getElementById("txtN2").focus;
+                }
+
+                if(erro==false)
+                {
+                    nume1 = eval(nume1);
+                    nume2 = eval(nume2);
+                    document.getElementById("txtResult").value = Total(nume1,nume2,OPE);
+                }
+                else
+                {
+                    if(nume1=="" && nume2=="")
+                    {
+                        alert("Preencha os dois campos com valores");
+                    }
+                    else
+                    {
+                        alert("Digite somente números.");
+                    }
+                }
+
+            }
+
+            function Total (n1,n2,op)
+            {
+                var Resultado;
+
+                if (op==1)
+                Resultado = n1+n2;
+                else if (op==2)
+                Resultado = n1-n2;
+                else if (op==3)
+                Resultado = n1*n2;
+                else if (n2==0)
+                {
+                    alert("Divisão por zero, não pode ser efetuada.")
+                    Resultado = "Resultado inválido"
+                    document.getElementById("txt").size=15;
+                }
+                else
+                    Resultado = n1/n2;
+
+                return Resultado; // Retorna o valor de onde foi carregado
+            }
+
+            function Aumenta (x)
+            {
+                if (x==1)
+                    document.getElementById("txtN1").size=12;
+
+                else
+                    document.getElementById("txtN2").size=12;
+            }
+
+            function Diminue (y)
+            {
+                if (y==1)
+                    document.getElementById("txtN1").size=6;
+    
+                else 
+                    document.getElementById("txtN2").size=6;
+            }
+            
+            function Inicio()
+            {
+                Diminue("1");
+                Diminue("2");
+            }
+            
+        </script>
+        
+    </head>
+
+    <body onLoad="Inicio()">
+            <div class="quadro">
+                <form id="form1">
+                    <center>
+                        <h5>
+                            <h2>Calculadora de 4 operações (+, -, *, /)</h2><br/>
+                        </h5>
+                        <table>
+                            <tr>
+                                <td>
+                                    <label>Informe o 1º valor numérico:</label>
+                                    <input type="text" id="txtN1" onFocus="Aumenta(1)" onBlur="Diminue(1)"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label>Informe o 2º valor numérico:</label>
+                                    <input type="text" id="txtN2" onFocus="Aumenta(2)" onBlur="Diminue(2)"/> 
+                                </td>
+                            </tr>
+                            
+                            <tr class="operadores">
+                                <td>
+                                    <input type="button" value="+" onClick="Exibir(1)" class="pressiona"/>
+
+                                    <input type="button" value="-" onClick="Exibir(2)" class="pressiona"/>
+
+                                    <input type="button" value="x" onClick="Exibir(3)" class="pressiona"/>
+
+                                    <input type="button" value=":" onClick="Exibir(4)" class="pressiona"/>
+
+                                    <input type="reset" value="C" class="pressiona"/> <!--<INPUT type="reset" value="C" onClick="Foco()" class="pressiona"/>-->
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>                               
+                                    O resultado é:
+                                    <input type="text" id="txtResult" onChange="Aumenta(3)" disabled/>
+                                </td>
+                            </tr>
+                        </table>
+                    </center>
+                </form>
+            </div> 
+    </body>
+
+</html>
